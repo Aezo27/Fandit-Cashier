@@ -21,13 +21,13 @@
         <!-- .form-group -->
         <div class="form-group">
           <div class="form-label-group">
-            <input type="email" id="inputUser" class="form-control" name="email" placeholder="Username" autofocus=""> <label for="inputUser">Email</label>
+            <input type="email" id="inputUser" required class="form-control" name="email" placeholder="Username" autofocus=""> <label for="inputUser">Email</label>
           </div>
         </div><!-- /.form-group -->
         <!-- .form-group -->
         <div class="form-group">
           <div class="form-label-group">
-            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"> <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" required name="password" class="form-control" placeholder="Password"> <label for="inputPassword">Password</label>
           </div>
         </div><!-- /.form-group -->
         <!-- .form-group -->
@@ -41,12 +41,12 @@
           </div>
         </div><!-- /.form-group -->
         <!-- recovery links -->
-        <div class="text-center pt-3">
+        {{-- <div class="text-center pt-3">
           <a href="auth-recovery-password.html" class="link">Forgot Password?</a>
-        </div><!-- /recovery links -->
+        </div><!-- /recovery links --> --}}
       </form><!-- /.auth-form -->
       <!-- copyright -->
-      <footer class="auth-footer"> Copyright &copy; <script>document.write(new Date().getFullYear());</script>| <a href="{{route('home')}}">{{config('app.name')}}</a> | All Rights Reserved.
+      <footer class="auth-footer"> Copyright &copy; <script>document.write(new Date().getFullYear());</script>| <a href="{{route('home')}}">Seneng Utomo</a> | All Rights Reserved.
       </footer>
     </main>
 @endsection

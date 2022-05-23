@@ -65,9 +65,19 @@
                     <div class="col">
                       <!-- .metric -->
                       <a href="user-teams.html" class="metric metric-bordered align-items-center">
-                        <h2 class="metric-label"> Teams </h2>
+                        <h2 class="metric-label"> Produk </h2>
                         <p class="metric-value h3">
-                          <sub><i class="oi oi-people"></i></sub> <span class="value">8</span>
+                          <sub><i class="fa-solid fa-list"></i></sub> <span class="value counter" data-counter="{{$barang->count()}}">0</span>
+                        </p>
+                      </a> <!-- /.metric -->
+                    </div><!-- /metric column -->
+                    <!-- metric column -->
+                    <div class="col">
+                      <!-- .metric -->
+                      <a href="user-teams.html" class="metric metric-bordered align-items-center">
+                        <h2 class="metric-label"> Total Stok </h2>
+                        <p class="metric-value h3">
+                          <sub><i class="fa-solid fa-bag-shopping"></i></sub> <span class="value counter" data-counter="{{$barang->sum('stok')}}">0</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
@@ -75,19 +85,9 @@
                     <div class="col">
                       <!-- .metric -->
                       <a href="user-projects.html" class="metric metric-bordered align-items-center">
-                        <h2 class="metric-label"> Projects </h2>
+                        <h2 class="metric-label"> Penjualan </h2>
                         <p class="metric-value h3">
-                          <sub><i class="oi oi-fork"></i></sub> <span class="value">12</span>
-                        </p>
-                      </a> <!-- /.metric -->
-                    </div><!-- /metric column -->
-                    <!-- metric column -->
-                    <div class="col">
-                      <!-- .metric -->
-                      <a href="user-tasks.html" class="metric metric-bordered align-items-center">
-                        <h2 class="metric-label"> Active Tasks </h2>
-                        <p class="metric-value h3">
-                          <sub><i class="fa fa-tasks"></i></sub> <span class="value">64</span>
+                          <sub><i class="fa-solid fa-cart-arrow-down"></i></sub> <span class="value counter" data-counter="{{$penjualan->count()}}">0</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
@@ -97,16 +97,17 @@
                   <!-- .metric -->
                   <a href="user-tasks.html" class="metric metric-bordered">
                     <div class="metric-badge">
-                      <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> ONGOING TASKS</span>
+                      <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> Omset</span>
                     </div>
                     <p class="metric-value h3">
-                      <sub><i class="oi oi-timer"></i></sub> <span class="value">8</span>
+                      <sub><i class="fa-solid fa-money-bill-1"></i></sub> <span class="value">Rp. </span><span class="value counter" data-counter="{{$penjualan->sum('total')}}">0</span>
                     </p>
                   </a> <!-- /.metric -->
                 </div><!-- /metric column -->
               </div><!-- /metric row -->
             </div><!-- /.section-block -->
-            <!-- grid row -->
+
+            {{-- <!-- grid row -->
             <div class="row">
               <!-- grid column -->
               <div class="col-12 col-lg-12 col-xl-4">
@@ -491,28 +492,13 @@
                   <a href="#" class="card-footer-item">View all <i class="fa fa-fw fa-angle-right"></i></a>
                 </div><!-- /.card-footer -->
               </div><!-- /.card -->
-            </div><!-- /card-deck-xl -->
+            </div><!-- /card-deck-xl --> --}}
+
           </div><!-- /.page-section -->
         </div><!-- /.page-inner -->
       </div><!-- /.page -->
-    </div><!-- .app-footer -->
-    <footer class="app-footer">
-      <ul class="list-inline">
-        <li class="list-inline-item">
-          <a class="text-muted" href="#">Support</a>
-        </li>
-        <li class="list-inline-item">
-          <a class="text-muted" href="#">Help Center</a>
-        </li>
-        <li class="list-inline-item">
-          <a class="text-muted" href="#">Privacy</a>
-        </li>
-        <li class="list-inline-item">
-          <a class="text-muted" href="#">Terms of Service</a>
-        </li>
-      </ul>
-      <div class="copyright"> Copyright © 2018. All right reserved. </div>
-    </footer><!-- /.app-footer -->
+    </div>
+    @include('layouts.footer')
     <!-- /.wrapper -->
   </main>
 @endsection

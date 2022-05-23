@@ -5,11 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Penjualan extends Model
+class BarangTag extends Model
 {
+  protected $table = 'barang_tag';
     use HasFactory;
-    public function barang()
-    {
-      return $this->belongsToMany(Barang::class);
-    }
 }
