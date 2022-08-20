@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('kasir/get-barang', [App\Http\Controllers\KasirController::class, 'get_barang'])->name('kasir.get_barang');
   Route::post('get-kasir/{id}', [App\Http\Controllers\KasirController::class, 'set_kasir'])->name('set_kasir');
   Route::post('update-kasir/{id}', [App\Http\Controllers\KasirController::class, 'update_kasir'])->name('update_kasir');
+  Route::get('delete-kasir/{id}', [App\Http\Controllers\KasirController::class, 'delete_kasir'])->name('delete_kasir');
   Route::any('simpan-kasir', [App\Http\Controllers\KasirController::class, 'simpan_kasir'])->name('simpan_kasir');
 
   Route::get('laporan-jual', [App\Http\Controllers\LaporanController::class, 'index'])->name('laporan_jual');

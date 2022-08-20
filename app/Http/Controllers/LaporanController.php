@@ -24,7 +24,7 @@ class LaporanController extends Controller
    */
   public function index()
   { 
-    $laps =  Lapjual::all();
+    $laps =  Lapjual::orderBy('created_at', 'desc')->get();
     return view('lapjual', compact('laps'));
   }
 }

@@ -81,37 +81,27 @@ class GudangController extends Controller
       // Fetch records
       if ($type == 'all') {
         if (!empty($filter)) {
-          $records = Barang::orderBy($columnName, $columnSortOrder)
+          $data = Barang::orderBy($columnName, $columnSortOrder)
           ->where($filter, 'like', '%' . $searchValue . '%')
-          ->whereNull('deleted_at')
-          ->skip($start)
-          ->take($rowperpage)
-          ->get();
+          ->whereNull('deleted_at');
         } else {
-          $records = Barang::orderBy($columnName, $columnSortOrder)
+          $data = Barang::orderBy($columnName, $columnSortOrder)
           ->where(function ($query) use ($searchValue) {
             $query->where('nama_barang', 'like', '%' . $searchValue . '%')
                   ->orWhere('kode_scan', 'like', '%' . $searchValue . '%')
                   ->orWhere('harga_satuan', 'like', '%' . $searchValue . '%')
                   ->orWhere('harga_jual', 'like', '%' . $searchValue . '%');
-          })
-          ->whereNull('deleted_at')
-          ->skip($start)
-          ->take($rowperpage)
-          ->get();
+          })->whereNull('deleted_at');
         }
       } elseif ($type == '0' || $type == '1') {
         $operation = $type == '0' ? '=':'>=';
         if (!empty($filter)) {
-          $records = Barang::orderBy($columnName, $columnSortOrder)
+          $data = Barang::orderBy($columnName, $columnSortOrder)
           ->where($filter, 'like', '%' . $searchValue . '%')
           ->where('stok', $operation , $type)
-          ->whereNull('deleted_at')
-          ->skip($start)
-          ->take($rowperpage)
-          ->get();
+          ->whereNull('deleted_at');
         } else {
-          $records = Barang::orderBy($columnName, $columnSortOrder)
+          $data = Barang::orderBy($columnName, $columnSortOrder)
           ->where(function ($query) use ($searchValue) {
             $query->where('nama_barang', 'like', '%' . $searchValue . '%')
                   ->orWhere('kode_scan', 'like', '%' . $searchValue . '%')
@@ -119,35 +109,29 @@ class GudangController extends Controller
                   ->orWhere('harga_jual', 'like', '%' . $searchValue . '%');
           })
           ->where('stok', $operation , $type)
-          ->whereNull('deleted_at')
-          ->skip($start)
-          ->take($rowperpage)
-          ->get();
+          ->whereNull('deleted_at');
         }
       } else {
         if (!empty($filter)) {
-          $records = Barang::orderBy($columnName, $columnSortOrder)
+          $data = Barang::orderBy($columnName, $columnSortOrder)
           ->where($filter, 'like', '%' . $searchValue . '%')
-          ->whereNotNull('deleted_at')
-          ->skip($start)
-          ->take($rowperpage)
-          ->get();
+          ->whereNotNull('deleted_at');
         } else {
-          $records = Barang::orderBy($columnName, $columnSortOrder)
+          $data = Barang::orderBy($columnName, $columnSortOrder)
           ->where(function ($query) use ($searchValue) {
             $query->where('nama_barang', 'like', '%' . $searchValue . '%')
                   ->orWhere('kode_scan', 'like', '%' . $searchValue . '%')
                   ->orWhere('harga_satuan', 'like', '%' . $searchValue . '%')
                   ->orWhere('harga_jual', 'like', '%' . $searchValue . '%');
           })
-          ->whereNotNull('deleted_at')
-          ->skip($start)
-          ->take($rowperpage)
-          ->get();
+          ->whereNotNull('deleted_at');
         }
       }
 
-      $totalRecordswithFilter = $records->count();
+    $totalRecordswithFilter = $data->get()->count();
+    $records = $data->skip($start)
+    ->take($rowperpage)
+    ->get();
 
       $data_arr = array();
 

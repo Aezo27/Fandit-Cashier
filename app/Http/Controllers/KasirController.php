@@ -97,6 +97,22 @@ class KasirController extends Controller
     ];
   }
 
+  public function delete_kasir($id_barang)
+  {
+    $lifetime = time() + 60 * 60 * 24 * 365;// one year
+    $data = json_decode(Cookie::get('transaksi'), true);
+
+    if ($data['barang'][$id_barang]!=null) {
+      unset($data['barang'][$id_barang]);
+    }
+
+    $array_json=json_encode($data);
+    Cookie::queue('transaksi', $array_json, $lifetime);
+    return [
+      'status'     => 'Data telah Dihapus',
+    ];
+  }
+
   public function get_kasir()
   {
     if (Cookie::get('transaksi') == null) {

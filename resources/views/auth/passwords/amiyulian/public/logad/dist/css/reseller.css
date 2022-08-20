@@ -1,0 +1,421 @@
+/*
+    Project: Olshop
+    Author: Aezo27
+    Start: 08 Juni 2020
+    https://aezo27.github.io/
+*/
+
+ /*//////////////////////////////////////////////////////////////////
+[ Other ]*/
+.bg-black {
+    background: #000 !important;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.reseller {
+    background: #e9ecef;
+    background-image: url(../img/1_1.jpg);
+}
+.reseller-body {
+    padding-top: 100px;
+}
+.reseller-body h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    color: #000;
+    font-weight: 900;
+}
+.reseller-body p {
+    font-size: 20px;
+}
+
+ /*//////////////////////////////////////////////////////////////////
+[ Navigation Bar ]*/
+menu {
+    background-color: #222;
+	margin: 0px;
+	padding: 0px;
+    border-bottom: 2px solid #e7ab3c;
+    border-top: 0px !important;
+	position: fixed;
+    width: 100%;
+	z-index: 999;
+	font-family: "Roboto", sans-serif;
+	font-size: 15px;
+	top: 0;
+    left: 0;
+}
+menu > ul {
+	padding-left: 3%;
+	list-style: none;
+	margin: 0px;
+}
+menu > ul > li{
+	float:left;
+}
+
+menu > ul > li:hover{
+	background:#e7ab3c;
+	transition: all 1s;
+}
+
+menu ul li:hover a{
+	color:#000 !important;
+	text-decoration: none !important;
+}
+menu > ul > li > a{
+	display: block;
+	padding: 1rem 1rem 1rem 1rem;
+	color: #fff !important;
+	text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+ /*//////////////////////////////////////////////////////////////////
+[ Slidenav Mobile ]*/
+.mobile {
+    background-color: #222;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 2px solid #e7ab3c;
+    border-top: 0px !important;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    top: 0;
+    left: 0;
+    color: #fff;
+    display: none;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: auto;
+    padding-top: 50px;
+        width: 280px;
+    height: 100%;
+}
+.collapsed {
+    font-size:26px;
+    cursor:pointer;
+    padding-left: 3%;
+    color: #e7ab3c;
+}
+.nav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+.nav a:hover {
+  color: #fff !important;
+}
+.nav ul {
+    list-style: none;
+    padding: 0;
+}
+.nav li {
+    box-shadow: 0px 2px 2px rgba(255, 254, 254, 0.86);
+    border-bottom: 1px solid rgb(206, 206, 206);
+}
+.nav li:hover {
+    background-color: #e7ab3c;
+    transition: 0.5s;
+    border-radius: .25rem;
+}
+.tutup {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #e7ab3c;
+    text-shadow: 0 2px 0 #fff;
+    opacity: 1;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out 0s;
+}
+.tutup:hover {
+    color: #e20202 !important;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    opacity: 1 !important;
+}
+.nav-footer {
+    padding-left: 3rem;
+    margin-top: 2rem;
+}
+.social-media {
+    display: inline-block;
+    float: left;
+    margin-bottom: 0px;
+    padding: 0;
+}
+.social-media li {
+    display: inline-block;
+    margin: 0;
+}
+.social-media li a {
+    color: #fff;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #000;
+    position: relative;
+}
+.social-media li a span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.social-media li a:hover {
+    color: #e7ab3c;
+}
+
+ /*//////////////////////////////////////////////////////////////////
+[ Login and Register Box ]*/
+.card {
+    border-radius: 15px;
+}
+.card-body{
+    border-radius: 15px 15px 0 0 ;
+}
+.login-box, .register-box {
+    margin-top: 100px;
+}
+.site-footer {
+    padding: 2em 0 0;
+    background: #333333;
+}
+.site-footer .border-top {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important; }
+.site-footer p {
+    color: #a5a5a5;
+}
+.site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5 {
+    color: rgb(255, 255, 255);
+}
+.site-footer a {
+    color: #e7ab3c;
+}
+.site-footer a:hover {
+      color: rgb(255, 255, 255); }
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+.site-footer .footer-heading {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+ /*//////////////////////////////////////////////////////////////////
+[ Button ]*/
+.btn {
+  text-transform: uppercase;
+  /* font-weight: 900;
+  padding: 6px 20px;  */
+}
+.btn:hover, .btn:active, .btn:focus {
+    outline: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important; }
+.btn.btn-black {
+    border-width: 2px;
+    border-color: #000;
+    background: #000;
+    color: #fff; }
+.btn.btn-black:hover {
+    color: #000;
+    background-color: transparent;
+}
+.btn.btn-black.btn-outline-black {
+    color: #000;
+    background-color: transparent;
+}
+.btn.btn-black.btn-outline-black:hover {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+.btn.btn-orange {
+    border-width: 2px;
+    border-color: #e7ab3c;
+    background: #e7ab3c;
+    color: #000;
+}
+.btn.btn-orange:hover {
+    color: #e7ab3c;
+    background-color: transparent;
+}
+.btn.btn-orange.btn-outline-orange {
+      color: #e7ab3c;
+      background-color: transparent;
+}
+.btn.btn-orange.btn-outline-orange:hover {
+    border-color: #e7ab3c;
+    background: #e7ab3c;
+    color: #000;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #e7ab3c;
+    border-color: #e7ab3c;
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #bd8724;
+    border-color: #bd8724;
+}
+
+.icheck-primary>input:first-child:not(:checked):not(:disabled):hover+input[type=hidden]+label::before, .icheck-primary>input:first-child:not(:checked):not(:disabled):hover+label::before {
+    border-color: #e7ab3c;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #e7ab3c;
+    border-color: #e7ab3c;
+}
+
+.icheck-primary>input:first-child:checked+label::before {
+    background-color: #e7ab3c;
+    border-color: #e7ab3c;
+}
+
+ /*//////////////////////////////////////////////////////////////////
+[ Link ]*/
+a {
+    color: #e7ab3c;
+}
+
+a:hover {
+    color: #bd8724;
+}
+
+ /*//////////////////////////////////////////////////////////////////
+[ Back to Top and Chatme ]*/
+.foot-box {
+    border: 1px solid #fff;
+    border-radius: 0 0 15px 15px;
+    /* line-height: 2rem; */
+    padding: 20px;
+    background-color: #222222;
+    color: #fff;
+    /* text-align: center; */
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    font-weight: normal;
+}
+
+.foot-box > p {
+	margin: 5px !important;
+}
+.foot-box > p> a {
+	color: #e7ab3c;
+    text-decoration: none
+ }
+.foot-box > p> a:hover {
+	color: #ff0000;
+    text-decoration: none
+ }
+
+ /*//////////////////////////////////////////////////////////////////
+[ Chat Button ]*/
+
+#ripple {
+    background-position: center;
+    transition: background 0.8s;
+    color: #fff
+}
+#ripple:hover {
+    background: #FF9800 radial-gradient(circle, transparent 1%, #FF9800 1%) center/15000%;
+}
+#ripple:focus {
+    background-color: #e7ab3c !important;
+    background-size: 100%;
+    transition: background 0s;
+    cursor: pointer;
+    border: 1px solid #e7ab3c;
+    outline: 0;
+    box-shadow: inset 0 2px 2px rgba(0,0,0,.075), 0 0 8px #e7ab3c;
+}
+#ripple:active {
+    background-color: #e7ab3c !important;
+    background-size: 100%;
+    transition: background 0s;
+    cursor: pointer;
+    border: 1px solid #e7ab3c;
+    outline: 0;
+    box-shadow: inset 0 2px 2px rgba(0,0,0,.075), 0 0 8px #e7ab3c;
+}
+.bantuan {
+    background-color: rgb(0, 0, 0);
+    margin: 0px;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    right: 3%;
+    cursor: pointer;
+    border: 1px solid #fff;
+    padding: 10px;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Responsive ]*/
+@media only screen and (min-width: 1200px){
+    .container {
+        max-width: 1170px;
+    }
+    .reseller-body h1 {
+        font-size: 2rem;
+    }
+}
+@media (min-width: 768px) {
+    .site-footer {
+        padding: 2em 0 0;
+    }
+}
+@media only screen and (max-width: 767px) {
+  .menu-overlay {
+    display: none;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    /* IE7 & 8 */
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 49;
+  }
+  .mobile {
+      display: block;
+  }
+  menu {
+      display: none;
+  }
+}

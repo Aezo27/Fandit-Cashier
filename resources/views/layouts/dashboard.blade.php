@@ -90,7 +90,7 @@
             </div><!-- /.top-bar-item -->
             <!-- .top-bar-item -->
             <div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
-              <!-- .nav -->
+              {{-- <!-- .nav -->
               <ul class="header-nav nav">
                 <!-- .nav-item -->
                 <li class="nav-item dropdown header-nav-dropdown">
@@ -122,7 +122,7 @@
                   </div><!-- .dropdown-menu -->
                 </li><!-- /.nav-item -->
               </ul><!-- /.nav -->
-              <!-- .btn-account -->
+              <!-- .btn-account --> --}}
               <div class="dropdown d-none d-md-flex">
                 <button class="btn-account" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   @if (Auth::user()->photo != null)
@@ -142,7 +142,9 @@
                 <div class="dropdown-menu">
                   <div class="dropdown-arrow d-lg-none" x-arrow=""></div>
                   <div class="dropdown-arrow ml-3 d-none d-lg-block"></div>
-                  <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{Auth::user()->name}} </h6><a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a> <a class="dropdown-item" href="./logout"><span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+                  <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{Auth::user()->name}} </h6>
+                  {{-- <a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a> --}}
+                  <a class="dropdown-item" href="./logout"><span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
                 </div><!-- /.dropdown-menu -->
               </div><!-- /.btn-account -->
             </div><!-- /.top-bar-item -->

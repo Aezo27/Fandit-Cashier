@@ -8,6 +8,7 @@
         <th> Harga</th>
         <th style="width:100px"> Jumlah</th>
         <th> Total</th>
+        <th style="width:10%"></th>
       </tr>
     </thead><!-- /thead -->
     <!-- tbody -->
@@ -24,6 +25,7 @@
               <input type="hidden" value="{{$data['stok']}}">
             </td>
             <td style="font-weight: bold" data-total="{{$data['total']}}" class="total">{{$data['total']}}</td>
+            <td style="display: flex"><a href="javascript:void(0)" id="delete-kasir" data-id="{{$data['id']}}" class="btn btn-sm btn-icon btn-secondary"><i class="fa fa-times"></i></a></td>
           </tr>
           @endforeach
         @endif

@@ -183,6 +183,20 @@
           });
         })
 
+        $(document).on('click', '#delete-kasir', function(e){
+          e.preventDefault();
+          $.ajax({
+            url: "delete-kasir/"+$(this).attr('data-id'),
+            type: "get",
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            success: function(response){
+              console.log(response);
+              getCokiee();
+              table_reload();
+            }
+          });
+        })
+
         $("#barang-search").autocomplete({
           autoFocus: true,
           source: function( request, response ) {
@@ -203,6 +217,13 @@
                   setTimeout(function() {
                     $('#clear-search').trigger('click'); 
                     $('#barang-search').autocomplete('close');
+                    if (data[0].stok < 1) {
+                      Toast.fire({
+                        icon: 'error',
+                        title: 'Stok Kosong!!'
+                      });
+                      return false;
+                    }
                     $('#add').submit();
                   }, 200);
                 }
@@ -215,6 +236,13 @@
           setTimeout(function() {
             $('#clear-search').trigger('click'); 
             $('#barang-search').autocomplete('close');
+            if (ui.item.stok < 1) {
+              Toast.fire({
+                icon: 'error',
+                title: 'Stok Kosong!!'
+              });
+              return false;
+            }
             $('#add').submit();
           }, 200);
            return false;
@@ -259,8 +287,10 @@
                   icon: 'error',
                   title: 'Stok Terbatas!!'
                 });
-                $(this).val($(this).next().val())
-                return false;
+                $(this).val($(this).next().val());
+                jml = parseInt($(this).next().val());
+                total = jml * parseInt($(this).parent().prev().attr('data-harga'));
+                // return false;
               }
           $(this).parent().next().html(total);
           $(this).parent().next().attr('data-total', total);
