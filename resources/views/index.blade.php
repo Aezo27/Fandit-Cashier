@@ -15,7 +15,7 @@
               <p class="lead">
                 <span class="font-weight-bold">Hi, {{Auth::user()->name}}.</span> <span class="d-block text-muted">Here’s what’s happening with your business today.</span>
               </p>
-              <div class="ml-auto">
+              {{-- <div class="ml-auto">
                 <!-- .dropdown -->
                 <div class="dropdown">
                   <button class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>This Week</span> <i class="fa fa-fw fa-caret-down"></i></button> <!-- .dropdown-menu -->
@@ -50,7 +50,7 @@
                     </div><!-- /.custom-control -->
                   </div><!-- /.dropdown-menu -->
                 </div><!-- /.dropdown -->
-              </div>
+              </div> --}}
             </div>
           </header><!-- /.page-title-bar -->
           <!-- .page-section -->
@@ -64,7 +64,7 @@
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="user-teams.html" class="metric metric-bordered align-items-center">
+                      <a href="{{route('gudang.show')}}" class="metric metric-bordered align-items-center">
                         <h2 class="metric-label"> Produk </h2>
                         <p class="metric-value h3">
                           <sub><i class="fa-solid fa-list"></i></sub> <span class="value counter" data-counter="{{$barang->count()}}">0</span>
@@ -74,7 +74,7 @@
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="user-teams.html" class="metric metric-bordered align-items-center">
+                      <a href="{{route('gudang.show')}}" class="metric metric-bordered align-items-center">
                         <h2 class="metric-label"> Total Stok </h2>
                         <p class="metric-value h3">
                           <sub><i class="fa-solid fa-bag-shopping"></i></sub> <span class="value counter" data-counter="{{$barang->sum('stok')}}">0</span>
@@ -84,7 +84,7 @@
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="user-projects.html" class="metric metric-bordered align-items-center">
+                      <a href="{{route('laporan_jual')}}" class="metric metric-bordered align-items-center">
                         <h2 class="metric-label"> Penjualan </h2>
                         <p class="metric-value h3">
                           <sub><i class="fa-solid fa-cart-arrow-down"></i></sub> <span class="value counter" data-counter="{{$penjualan->count()}}">0</span>
@@ -95,7 +95,7 @@
                 </div><!-- metric column -->
                 <div class="col-lg-3">
                   <!-- .metric -->
-                  <a href="user-tasks.html" class="metric metric-bordered">
+                  <a href="{{route('laporan_jual')}}" class="metric metric-bordered">
                     <div class="metric-badge">
                       <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> Omset</span>
                     </div>
