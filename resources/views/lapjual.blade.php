@@ -16,12 +16,12 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item active">
-                  <a href="{{route('home')}}"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Laporan Penjualan</a>
+                  <a href="{{ route('home') }}"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Laporan Penjualan</a>
                 </li>
               </ol>
             </nav><!-- /.breadcrumb -->
             <!-- floating action -->
-            <a href="{{route('gudang.input')}}"><button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button></a> <!-- /floating action -->
+            <a href="{{ route('gudang.input') }}"><button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button></a> <!-- /floating action -->
             <!-- title and toolbar -->
             <div class="d-md-flex align-items-md-start">
               <h1 class="page-title mr-sm-auto"> Laporan Penjualan </h1><!-- .btn-toolbar -->
@@ -53,13 +53,13 @@
                     <!-- create empty row to passing html validator -->
                     @foreach ($laps as $lp)
                       <tr>
-                        <td>{{$loop->index+1}}</td>
-                        <td>{{$lp->nama_barang}}</td>
-                        <td>{{$lp->harga_jual}}</td>
-                        <td>{{$lp->jumlah}}</td>
-                        <td>{{$lp->total_harga}}</td>
-                        <td>{{$lp->nama_kasir}}</td>
-                        <td>{{$lp->created_at->isoFormat('D MMMM Y')}}</td>
+                        <td>{{ $loop->index + 1 }}</td>
+                        <td>{{ $lp->nama_barang }}</td>
+                        <td>{{ $lp->harga_jual }}</td>
+                        <td>{{ $lp->jumlah }}</td>
+                        <td>{{ $lp->total_harga }}</td>
+                        <td>{{ $lp->nama_kasir }}</td>
+                        <td>{{ $lp->created_at->isoFormat('D MMMM Y') }}</td>
                       </tr>
                     @endforeach
                   </tbody><!-- /tbody -->
@@ -75,15 +75,14 @@
   </main><!-- /.app-main -->
 @endsection
 @push('custom-js')
-<script>
-  $(document).ready(function(){
-    $('#laporan').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-          'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
+  <script>
+    $(document).ready(function() {
+      $('#laporan').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+          'csv', 'print'
+        ]
+      });
     });
-  });
-</script>
-    
+  </script>
 @endpush

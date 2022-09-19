@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class KasirController extends Controller
 {
-      /**
+  /**
    * Create a new controller instance.
    *
    * @return void
@@ -31,32 +31,32 @@ class KasirController extends Controller
   public function index()
   {
     $this->set_kasir(null);
-    
+
     $barangs =  Barang::all();
     return view('kasir', compact('barangs'));
   }
 
   public function set_kasir($id_barang)
   {
-    $lifetime = time() + 60 * 60 * 24 * 365;// one year
+    $lifetime = time() + 60 * 60 * 24 * 365; // one year
     $id = hexdec(uniqid());
     $tanggal = Carbon::now();
 
     if (Cookie::get('transaksi') == null) {
-       $data=[
-         'id'=>$id,
-         'tanggal'=>$tanggal->isoFormat('D MMMM Y'),
-         'barang' => []
-        ];
-       $array_json=json_encode($data);
+      $data = [
+        'id' => $id,
+        'tanggal' => $tanggal->isoFormat('D MMMM Y'),
+        'barang' => []
+      ];
+      $array_json = json_encode($data);
       Cookie::queue('transaksi', $array_json, $lifetime);
       return 'Data telah ditambahkan';
     } else {
       if ($id_barang != null) {
         $data = json_decode(Cookie::get('transaksi'), true);
         $barang =  Barang::where('id', $id_barang)->first();
-  
-        $data['barang'][$id_barang]= [
+
+        $data['barang'][$id_barang] = [
           "id" => $barang->id,
           "nama" => $barang->nama_barang,
           "kode" => $barang->kode_scan,
@@ -65,7 +65,7 @@ class KasirController extends Controller
           "stok" => $barang->stok,
           "total" => $barang->harga_jual * 1
         ];
-        $array_json=json_encode($data);
+        $array_json = json_encode($data);
         Cookie::queue('transaksi', $array_json, $lifetime);
         return [
           'status'     => 'Data telah ditambahkan',
@@ -75,13 +75,13 @@ class KasirController extends Controller
     }
   }
 
-  public function update_kasir(Request $request,$id_barang)
+  public function update_kasir(Request $request, $id_barang)
   {
-    $lifetime = time() + 60 * 60 * 24 * 365;// one year
+    $lifetime = time() + 60 * 60 * 24 * 365; // one year
     $data = json_decode(Cookie::get('transaksi'), true);
     $barang =  Barang::where('id', $id_barang)->first();
 
-    $data['barang'][$id_barang]= [
+    $data['barang'][$id_barang] = [
       "id" => $barang->id,
       "nama" => $barang->nama_barang,
       "kode" => $barang->kode_scan,
@@ -90,7 +90,7 @@ class KasirController extends Controller
       "stok" => $barang->stok,
       "total" => $barang->harga_jual * $request->jumlah
     ];
-    $array_json=json_encode($data);
+    $array_json = json_encode($data);
     Cookie::queue('transaksi', $array_json, $lifetime);
     return [
       'status'     => 'Data telah ditambahkan',
@@ -99,14 +99,14 @@ class KasirController extends Controller
 
   public function delete_kasir($id_barang)
   {
-    $lifetime = time() + 60 * 60 * 24 * 365;// one year
+    $lifetime = time() + 60 * 60 * 24 * 365; // one year
     $data = json_decode(Cookie::get('transaksi'), true);
 
-    if ($data['barang'][$id_barang]!=null) {
+    if ($data['barang'][$id_barang] != null) {
       unset($data['barang'][$id_barang]);
     }
 
-    $array_json=json_encode($data);
+    $array_json = json_encode($data);
     Cookie::queue('transaksi', $array_json, $lifetime);
     return [
       'status'     => 'Data telah Dihapus',
@@ -132,9 +132,9 @@ class KasirController extends Controller
   public function get_barang(Request $request)
   {
     $records = Barang::where('nama_barang', 'like', '%' . $request->search . '%')
-              ->orWhere('kode_scan', 'like', '%' . $request->search . '%')
-              ->whereNull('deleted_at')
-              ->get();
+      ->orWhere('kode_scan', 'like', '%' . $request->search . '%')
+      ->whereNull('deleted_at')
+      ->get();
     $data_arr = array();
     foreach ($records as $record) {
       $id = $record->id;
@@ -170,15 +170,15 @@ class KasirController extends Controller
 
       foreach ($data->barang as $barang) {
         $bp =  new BarangPenjualan();
-        $bp->barang_id= $barang->id;
-        $bp->penjualan_id= $add->id;
-        $bp->jumlah= $barang->jumlah;
-        $bp->total_harga= $barang->total;
+        $bp->barang_id = $barang->id;
+        $bp->penjualan_id = $add->id;
+        $bp->jumlah = $barang->jumlah;
+        $bp->total_harga = $barang->total;
         $bp->save();
         // update stok
         $stok = Barang::where('id', $barang->id)->first();
         $stok->stok = $stok->stok - $barang->jumlah;
-        $stok->save(); 
+        $stok->save();
       }
 
 

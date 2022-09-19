@@ -11,9 +11,11 @@
         <div class="page-inner">
           <!-- .page-title-bar -->
           <header class="page-title-bar">
+            <h1>Dashboard</h1>
             <div class="d-flex flex-column flex-md-row">
               <p class="lead">
-                <span class="font-weight-bold">Hi, {{Auth::user()->name}}.</span> <span class="d-block text-muted">Here’s what’s happening with your business today.</span>
+                {{-- <span class="font-weight-bold">Hai, {{ Auth::user()->name }}.</span> --}}
+                <span class="d-block text-muted">Bagaimanakan penjualan anda hari ini.</span>
               </p>
               {{-- <div class="ml-auto">
                 <!-- .dropdown -->
@@ -64,30 +66,30 @@
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="{{route('gudang.show')}}" class="metric metric-bordered align-items-center">
+                      <a href="{{ route('gudang.show') }}" class="metric metric-bordered align-items-center">
                         <h2 class="metric-label"> Produk </h2>
                         <p class="metric-value h3">
-                          <sub><i class="fa-solid fa-list"></i></sub> <span class="value counter" data-counter="{{$barang->count()}}">0</span>
+                          <sub><i class="fa-solid fa-list"></i></sub> <span class="value counter" data-counter="{{ $barang->count() }}">0</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="{{route('gudang.show')}}" class="metric metric-bordered align-items-center">
+                      <a href="{{ route('gudang.show') }}" class="metric metric-bordered align-items-center">
                         <h2 class="metric-label"> Total Stok </h2>
                         <p class="metric-value h3">
-                          <sub><i class="fa-solid fa-bag-shopping"></i></sub> <span class="value counter" data-counter="{{$barang->sum('stok')}}">0</span>
+                          <sub><i class="fa-solid fa-bag-shopping"></i></sub> <span class="value counter" data-counter="{{ $barang->sum('stok') }}">0</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
                     <!-- metric column -->
                     <div class="col">
                       <!-- .metric -->
-                      <a href="{{route('laporan_jual')}}" class="metric metric-bordered align-items-center">
+                      <a href="{{ route('laporan_jual') }}" class="metric metric-bordered align-items-center">
                         <h2 class="metric-label"> Penjualan </h2>
                         <p class="metric-value h3">
-                          <sub><i class="fa-solid fa-cart-arrow-down"></i></sub> <span class="value counter" data-counter="{{$penjualan->count()}}">0</span>
+                          <sub><i class="fa-solid fa-cart-arrow-down"></i></sub> <span class="value counter" data-counter="{{ $penjualan->count() }}">0</span>
                         </p>
                       </a> <!-- /.metric -->
                     </div><!-- /metric column -->
@@ -95,12 +97,12 @@
                 </div><!-- metric column -->
                 <div class="col-lg-3">
                   <!-- .metric -->
-                  <a href="{{route('laporan_jual')}}" class="metric metric-bordered">
+                  <a href="{{ route('laporan_jual') }}" class="metric metric-bordered">
                     <div class="metric-badge">
                       <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span> Omset</span>
                     </div>
                     <p class="metric-value h3">
-                      <sub><i class="fa-solid fa-money-bill-1"></i></sub> <span class="value">Rp. </span><span class="value counter" data-counter="{{$penjualan->sum('total')}}">0</span>
+                      <sub><i class="fa-solid fa-money-bill-1"></i></sub> <span class="value">Rp. </span><span class="value counter" data-counter="{{ $penjualan->sum('total') }}">0</span>
                     </p>
                   </a> <!-- /.metric -->
                 </div><!-- /metric column -->
