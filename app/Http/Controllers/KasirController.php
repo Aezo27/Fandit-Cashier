@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use charlieuki\ReceiptPrinter\ReceiptPrinter as ReceiptPrinter;
 
 class KasirController extends Controller
 {
@@ -168,7 +169,10 @@ class KasirController extends Controller
       $add->unique_id = $data->id;
       $add->save();
 
+      $items = [];
+
       foreach ($data->barang as $barang) {
+        $namaBarang =  Barang::where('id', $barang->id)->first()->nama_barang;
         $bp =  new BarangPenjualan();
         $bp->barang_id = $barang->id;
         $bp->penjualan_id = $add->id;
@@ -179,8 +183,69 @@ class KasirController extends Controller
         $stok = Barang::where('id', $barang->id)->first();
         $stok->stok = $stok->stok - $barang->jumlah;
         $stok->save();
+
+        // looping ke item
+        $items[] = [
+          'name' => $namaBarang,
+          'qty' => $barang->jumlah,
+          'price' => $barang->total,
+        ];
       }
 
+      // Set params
+      $mid = '123123456';
+      $store_name = 'Seneng Utomo';
+      $store_address = 'Tangen, Sragen';
+      $store_phone = '1234567890';
+      $store_email = 'yourmart@email.com';
+      $store_website = 'yourmart.com';
+      $tax_percentage = 10;
+      $transaction_id = 'TX123ABC456';
+      $currency = 'Rp';
+      $image_path = 'logo.png';
+
+      // Init printer
+      $printer = new ReceiptPrinter;
+      $printer->init(
+        config('receiptprinter.connector_type'),
+        config('receiptprinter.connector_descriptor')
+      );
+
+      // Set store info
+      $printer->setStore($mid, $store_name, $store_address, $store_phone, $store_email, $store_website);
+
+      // Set currency
+      $printer->setCurrency($currency);
+
+      // Add items
+      foreach ($items as $item) {
+        $printer->addItem(
+          $item['name'],
+          $item['qty'],
+          $item['price']
+        );
+      }
+      // Set tax
+      $printer->setTax($tax_percentage);
+
+      // Calculate total
+      $printer->calculateSubTotal();
+      $printer->calculateGrandTotal();
+
+      // Set transaction ID
+      $printer->setTransactionID($transaction_id);
+
+      // Set logo
+      // Uncomment the line below if $image_path is defined
+      //$printer->setLogo($image_path);
+
+      // Set QR code
+      $printer->setQRcode([
+        'tid' => $transaction_id,
+      ]);
+
+      // Print receipt
+      $printer->printReceipt();
 
       Cookie::queue(
         Cookie::forget('transaksi')
