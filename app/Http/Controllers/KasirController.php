@@ -188,7 +188,7 @@ class KasirController extends Controller
         $items[] = [
           'name' => $namaBarang,
           'qty' => $barang->jumlah,
-          'price' => $barang->total,
+          'price' => $barang->total / $barang->jumlah,
         ];
       }
 
@@ -199,10 +199,10 @@ class KasirController extends Controller
       $store_phone = '1234567890';
       $store_email = 'yourmart@email.com';
       $store_website = 'yourmart.com';
-      $tax_percentage = 10;
-      $transaction_id = 'TX123ABC456';
+      $tax_percentage = 0;
+      $transaction_id = $data->id;
       $currency = 'Rp';
-      $image_path = 'logo.png';
+      $image_path = public_path() . '/logo_mini.png';
 
       // Init printer
       $printer = new ReceiptPrinter;
@@ -237,7 +237,7 @@ class KasirController extends Controller
 
       // Set logo
       // Uncomment the line below if $image_path is defined
-      //$printer->setLogo($image_path);
+      $printer->setLogo($image_path);
 
       // Set QR code
       $printer->setQRcode([
@@ -257,6 +257,7 @@ class KasirController extends Controller
       ];
     } catch (\Exception $e) {
       DB::rollback();
+      dd($e);
       return [
         'notif'     => 'Gagal disimpan!',
         'alert'     => 'error'
